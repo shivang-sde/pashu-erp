@@ -1078,3 +1078,6 @@ async function run() {
 }
 
 run()
+
+
+export { run as seedDistricts };
