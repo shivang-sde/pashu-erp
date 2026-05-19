@@ -3,7 +3,7 @@ dotenv.config()
 import sequelize from './database.js'
 import { District } from '../models/index.js'
 
-async function run() {
+async function seedDistricts() {
   try {
     await sequelize.authenticate()
     console.log('✅ Connected to database')
@@ -1077,7 +1077,4 @@ async function run() {
   }
 }
 
-run()
-
-
-export { run as seedDistricts };
+export { seedDistricts }
