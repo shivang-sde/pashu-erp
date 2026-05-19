@@ -1,4 +1,4 @@
-FROM node:20-alpine AS builder
+FROM node:20-slim AS builder
 
 WORKDIR /usr/src/app
 ARG VITE_API_URL
@@ -8,10 +8,7 @@ ENV VITE_API_URL=${VITE_API_URL}
 ENV VITE_API_SECRET=${VITE_API_SECRET}
 
 COPY package*.json ./
-
-# FIX: Remove node_modules and lock file, then use npm install (not ci)
-RUN rm -rf node_modules package-lock.json && \
-    npm install
+RUN npm install
 
 COPY . .
 RUN npm run build
