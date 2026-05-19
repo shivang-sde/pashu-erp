@@ -8,7 +8,10 @@ ENV VITE_API_URL=${VITE_API_URL}
 ENV VITE_API_SECRET=${VITE_API_SECRET}
 
 COPY package*.json ./
-RUN npm ci
+
+# FIX: Remove node_modules and lock file, then use npm install (not ci)
+RUN rm -rf node_modules package-lock.json && \
+    npm install
 
 COPY . .
 RUN npm run build
